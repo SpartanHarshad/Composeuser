@@ -4,6 +4,7 @@ package io.harshad.compuser.composables
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
@@ -56,6 +57,7 @@ fun UserScreen(
     vm: UserViewModel = hiltViewModel()
 ) {
     val localFocusManager = LocalFocusManager.current
+    val ctx: Context = LocalContext.current
     var userName by remember { mutableStateOf("") }
     var userAge by remember { mutableStateOf("") }
     var userAdr by remember { mutableStateOf("") }
@@ -151,10 +153,46 @@ fun UserScreen(
                         userAdr = newAdr
                     }
                 )
-                CustomCurveRoundedButton(R.string.btn_save){
+                CustomCurveRoundedButton(R.string.btn_save) {
+                    val result = isDataValid(userAdr, userAge, userName)
+                    if (result != 0) {
+                        when (result) {
+                            1 -> {
+                                showToast(errorMsg = "Please Enter name", ctx = ctx)
+                            }
 
+                            2 -> {
+                                showToast(errorMsg = "Please Enter your age", ctx = ctx)
+                            }
+
+                            3 -> {
+                                showToast(errorMsg = "Please Enter your address", ctx = ctx)
+                            }
+                        }
+                    }
                 }
             }
         })
 
 }
+
+
+fun isDataValid(userAdr: String, userAge: String, userName: String): Int {
+    return if (userName.isEmpty()) {
+        1
+    } else if (userAge.isEmpty()) {
+        2
+    } else if (userAdr.isEmpty()) {
+        3
+    } else {
+        0
+    }
+}
+
+fun showToast(errorMsg: String, ctx: Context) {
+    Toast.makeText(
+        ctx, errorMsg,
+        Toast.LENGTH_SHORT
+    ).show()
+}
+
