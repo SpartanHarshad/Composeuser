@@ -186,6 +186,9 @@ fun UserScreen(
                             3 -> {
                                 showToast(errorMsg = "Please Enter your address", ctx = ctx)
                             }
+                            4 -> {
+                                showToast(errorMsg = "Please Enter valid age", ctx = ctx)
+                            }
                         }
                     }
                 }
@@ -205,6 +208,8 @@ fun isDataValid(userAdr: String, userAge: String, userName: String): Int {
         2
     } else if (userAdr.isEmpty()) {
         3
+    } else if (userAge.toInt() > 0) {
+        4
     } else {
         0
     }

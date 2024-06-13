@@ -93,4 +93,8 @@ dependencies {
     kapt "androidx.room:room-compiler:2.6.1"
     //Constraint layout
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+    //
+    testImplementation "org.mockito:mockito-core:4.0.0"
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
 }
