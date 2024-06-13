@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">CompUser</string>
+    <string name="user_title">User Details</string>
+    <string name="user_name">Name :</string>
+    <string name="user_age">Age :</string>
+    <string name="user_dob">DOB : </string>
+    <string name="user_Adr">Address :</string>
+    <string name="hint_user_name">Enter your name</string>
+    <string name="hint_user_age">Enter your age</string>
+    <string name="hint_dob_name">select your DOB</string>
+    <string name="hint_user_adr">Enter your Address</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="btn_save">Save</string>
 </resources>
