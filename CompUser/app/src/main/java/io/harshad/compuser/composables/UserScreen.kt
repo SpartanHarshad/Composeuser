@@ -172,6 +172,7 @@ fun UserScreen(
                         userName = ""
                         userAge = ""
                         userAdr = ""
+                        selectedDate = System.currentTimeMillis()
                         navAction.navigateToShowUsers()
                     } else {
                         when (result) {
@@ -208,7 +209,7 @@ fun isDataValid(userAdr: String, userAge: String, userName: String): Int {
         2
     } else if (userAdr.isEmpty()) {
         3
-    } else if (userAge.toInt() > 0) {
+    } else if (userAge.toInt() < 0) {
         4
     } else {
         0
