@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import io.harshad.compuser.R
+import io.harshad.compuser.data.local.UserEntity
 import io.harshad.compuser.util.Util.changeMillisToDateString
 import io.harshad.compuser.util.navigation.NavigationAction
 import io.harshad.compuser.viewmodel.UserViewModel
@@ -155,7 +156,18 @@ fun UserScreen(
                 )
                 CustomCurveRoundedButton(R.string.btn_save) {
                     val result = isDataValid(userAdr, userAge, userName)
-                    if (result != 0) {
+                    if (result == 0) {
+                        val user = UserEntity(
+                            uName = userName,
+                            uAge = userAge.toInt(),
+                            uAdr = userAdr,
+                            uDob = selectedDate.changeMillisToDateString()
+                        )
+                        vm.insertUser(user)
+                        userName = ""
+                        userAge = ""
+                        userAdr = ""
+                    } else {
                         when (result) {
                             1 -> {
                                 showToast(errorMsg = "Please Enter name", ctx = ctx)

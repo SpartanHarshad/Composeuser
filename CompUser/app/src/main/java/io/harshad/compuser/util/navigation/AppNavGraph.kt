@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import io.harshad.compuser.composables.ShowUsers
 import io.harshad.compuser.composables.SplashScreen
 import io.harshad.compuser.composables.UserScreen
 
@@ -25,5 +26,10 @@ fun AppNavGraph(
         composable(route = AppDestinations.USER_ROUTE) {
             UserScreen(navAction = navActions)
         }
+
+        composable(route = AppDestinations.SHOW_USER_ROUTE) {
+            ShowUsers(navAction = navActions)
+        }
+
     }
 }
