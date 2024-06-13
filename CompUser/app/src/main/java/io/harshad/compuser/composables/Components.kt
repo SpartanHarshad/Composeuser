@@ -6,8 +6,12 @@ import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,6 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.DatePickerState
@@ -48,6 +53,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.harshad.compuser.R
+import io.harshad.compuser.data.local.UserEntity
+import java.time.format.TextStyle
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -161,6 +168,105 @@ fun CustomCurveRoundedButton(btnTxt: Int, onBtnClick: () -> Unit) {
                 .clip(MaterialTheme.shapes.medium)
         ) {
             Text(text = stringResource(id = btnTxt))
+        }
+    }
+}
+
+@Composable
+fun UserItemCard(user: UserEntity) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
+                .padding(10.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                Text(
+                    text = stringResource(id = R.string.user_name),
+                    fontStyle = FontStyle.Normal,
+                    fontSize = 16.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(end = 16.dp)
+                )
+                Text(
+                    text = user.uName,
+                    fontStyle = FontStyle.Normal,
+                    fontSize = 14.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Normal,
+                )
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                Text(
+                    text = stringResource(id = R.string.user_age),
+                    fontStyle = FontStyle.Normal,
+                    fontSize = 16.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(end = 16.dp)
+                )
+                Text(
+                    text = "${user.uAge}",
+                    fontStyle = FontStyle.Normal,
+                    fontSize = 14.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Normal,
+                )
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                Text(
+                    text = stringResource(id = R.string.user_dob),
+                    fontStyle = FontStyle.Normal,
+                    fontSize = 16.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(end = 16.dp)
+                )
+                Text(
+                    text = user.uDob,
+                    fontStyle = FontStyle.Normal,
+                    fontSize = 14.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Normal,
+                )
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                Text(
+                    text = stringResource(id = R.string.user_Adr),
+                    fontStyle = FontStyle.Normal,
+                    fontSize = 16.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(end = 16.dp)
+                )
+                Text(
+                    text = user.uAdr,
+                    fontStyle = FontStyle.Normal,
+                    fontSize = 14.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Normal,
+                )
+            }
         }
     }
 }

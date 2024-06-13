@@ -12,4 +12,6 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="btn_save">Save</string>
+    <string name="users">User List</string>
+    <string name="btn_show_user">Show Users</string>
 </resources>

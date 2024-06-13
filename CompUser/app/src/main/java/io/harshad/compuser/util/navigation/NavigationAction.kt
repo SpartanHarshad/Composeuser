@@ -24,4 +24,8 @@ class NavigationAction(private val navController: NavHostController) {
             launchSingleTop = true
         }
     }
+
+    fun popBack(){
+        navController.popBackStack()
+    }
 }

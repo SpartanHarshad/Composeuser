@@ -47,6 +47,11 @@ import io.harshad.compuser.data.local.UserEntity
 import io.harshad.compuser.util.Util.changeMillisToDateString
 import io.harshad.compuser.util.navigation.NavigationAction
 import io.harshad.compuser.viewmodel.UserViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.time.Instant
 
 
@@ -167,6 +172,7 @@ fun UserScreen(
                         userName = ""
                         userAge = ""
                         userAdr = ""
+                        navAction.navigateToShowUsers()
                     } else {
                         when (result) {
                             1 -> {
@@ -182,6 +188,9 @@ fun UserScreen(
                             }
                         }
                     }
+                }
+                CustomCurveRoundedButton(btnTxt = R.string.btn_show_user) {
+                    navAction.navigateToShowUsers()
                 }
             }
         })
